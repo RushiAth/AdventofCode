@@ -13,15 +13,9 @@ def day(fishD):
     return newFishD
 
 handIn = open('input6.txt')
-
 content = Counter([int(num) for num in (handIn.read()).split(',')])
 
 for i in range(256):
     content = day(content)
 
-sum = 0
-
-for num in content.values():
-    sum += num
-
-print(sum)
+print(sum(content.values()))
