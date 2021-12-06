@@ -43,3 +43,4 @@ for num in Counter(allCoords).values():
         counter += 1
 
 print(counter)
+print('hello')
