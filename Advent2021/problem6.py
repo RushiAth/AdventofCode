@@ -9,7 +9,6 @@ def day(fishD):
         else:
             newFishD[8] = fishD[0]
             newFishD[6] += fishD[0]
-
     return newFishD
 
 handIn = open('input6.txt')
