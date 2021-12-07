@@ -7,14 +7,12 @@ def fuelCalc(crabs, position):
         positionFuel = 0
 
         for j in range(abs(crabs[index]-position)):
-            positionFuel += 1
-            sumFuel += positionFuel
-        
+            positionFuel += (j+1)
+            
         sumFuel += positionFuel
-
     return sumFuel
 
-handIn = open('testingInput.txt')
+handIn = open('input7.txt')
 content = [int(num) for num in (handIn.read()).split(',')]
 
 fuelList = []
