@@ -1,3 +1,9 @@
+def mappingNum():
+    mapping = []
+
+
+    return mapping
+
 def findNumSum(input, output):
     numSum = 0
 
@@ -12,6 +18,7 @@ totalSum = 0
 
 for index in range(len(content)):
     totalSum += findNumSum(content[index][0], content[index][1])
+
 
 
 #part 1
