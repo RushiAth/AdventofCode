@@ -1,4 +1,4 @@
-handIn = open('testingInput.txt')
+handIn = open('input9.txt')
 content = [line.strip() for line in handIn.readlines()]
 
 def checkSurrounding(num, index1, index2, lst):
@@ -13,22 +13,21 @@ def basinHelp(basinPosition, num, lst):
     returning = {}
 
     for i in tiles:
-        if tiles[i] == int(num)+1 and tiles[i] != 9:
-            returning[i] = tiles[i]
-
+        if tiles[i] >= int(num)+1 and tiles[i] != 9:
+            returning.update({i: tiles[i]})
     return returning
 
 def basin(basinPosition, num, lst):
-    size = 1
+    sizeCounter = {basinPosition: int(num)}
     basinContents = {basinPosition: int(num)}
 
     while len(basinContents) != 0:
-        continuingBasin = basinHelp(list(basinContents.keys())[0], num, lst)
-        size += len(continuingBasin)
+        continuingBasin = basinHelp(list(basinContents.keys())[0], list(basinContents.values())[0], lst)
         basinContents.update(continuingBasin)
+        sizeCounter.update(continuingBasin)
         basinContents.pop(list(basinContents.keys())[0])
 
-    return size
+    return len(sizeCounter)
 
 for index in range(len(content)):
     content[index] = '9' + content[index] + '9'
@@ -49,11 +48,9 @@ for index in range(1, len(content)-1):
 print('Risk (Part 1):', risk)
 
 #Part 2
-for i in content: print(i)
 basinSizes = []
-print('List of Basin Centers:', basinCenters)
 
 for b in basinCenters:
     basinSizes.append(basin(b, basinCenters[b], content))
 
-print('Basin Sizes:', sorted(basinSizes))
+print('Basin Sizes:', sorted(basinSizes, reverse=True))
