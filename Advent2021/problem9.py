@@ -5,11 +5,28 @@ def checkSurrounding(num, index1, index2, lst):
     surrounding = [lst[index1-1][index2], lst[index1][index2-1], lst[index1][index2+1], lst[index1+1][index2]]
     tf = [num < SNum for SNum in surrounding]
 
-    return all(tf) 
+    return all(tf)
 
-def basin(basins, lst):
-    size = 0
+def basinHelp(basinPosition, num, lst):
+    y, x = basinPosition[0], basinPosition[1]
+    tiles = {(y-1, x): int(lst[y-1][x]), (y, x-1): int(lst[y][x-1]), (y, x+1): int(lst[y][x+1]), (y+1, x): int(lst[y+1][x])}
+    returning = {}
 
+    for i in tiles:
+        if tiles[i] == int(num)+1 and tiles[i] != 9:
+            returning[i] = tiles[i]
+
+    return returning
+
+def basin(basinPosition, num, lst):
+    size = 1
+    basinContents = {basinPosition: int(num)}
+
+    while len(basinContents) != 0:
+        continuingBasin = basinHelp(list(basinContents.keys())[0], num, lst)
+        size += len(continuingBasin)
+        basinContents.update(continuingBasin)
+        basinContents.pop(list(basinContents.keys())[0])
 
     return size
 
@@ -29,23 +46,14 @@ for index in range(1, len(content)-1):
             basinCenters[(index, index2)] = content[index][index2]
             risk += (int(content[index][index2]) + 1)
 
-print(risk)
+print('Risk (Part 1):', risk)
 
 #Part 2
+for i in content: print(i)
 basinSizes = []
-print(basinCenters)
+print('List of Basin Centers:', basinCenters)
 
 for b in basinCenters:
-    basinSizes.append(basin(basinCenters, content))
+    basinSizes.append(basin(b, basinCenters[b], content))
 
-print(sorted(basinSizes))
-
-
-# for i in content:
-#     for j in i:
-#         if j == '9':
-#             print('\033[1;31;40mX', end='')
-#         else:
-#             print('\033[1;32;40m.', end='')
-#     print()
-# print('\033[0;37;40m')
+print('Basin Sizes:', sorted(basinSizes))
