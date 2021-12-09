@@ -5,11 +5,9 @@ content = [(line.strip()).split(' | ') for line in (handIn.readlines())]
 counter = 0
 
 for index in range(len(content)):
-    value = content[index][1].split()
-
-    for i in value:
+    for i in content[index][1].split():
         if len(i) in [2, 3, 4, 7]:
-            sum += 1
+            counter += 1
 
 print(counter)
 
@@ -18,13 +16,18 @@ print(counter)
 def mappingNum(input):
     mapping = {'top': '', 'middle': '', 'bottom': '', 'topright': '', 'topleft': '', 'bottomright': '', 'bottomleft': ''}
 
-    input = sorted(input.split())
+    input = [sorted(num) for num in input.split()]
     print(input)
 
     for letters in input:
         if len(letters) == 2:
             mapping['topright'] = letters[0]
             mapping['bottomright'] = letters[1]
+
+        if len(letters) == 3:
+            for letter in letters: 
+                if letter not in mapping.values():
+                    None
     
     for letters in input:
         for letter in letters:
