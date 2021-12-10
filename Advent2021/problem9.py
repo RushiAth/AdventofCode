@@ -41,7 +41,7 @@ basinCenters = {}
 
 for index in range(1, len(content)-1):
     for index2 in range(1, len(content[index])-1):
-        if checkSurrounding(content[index][index2], index, index2, content) == True:
+        if checkSurrounding(content[index][index2], index, index2, content):
             basinCenters[(index, index2)] = content[index][index2]
             risk += (int(content[index][index2]) + 1)
 
@@ -53,4 +53,4 @@ basinSizes = []
 for b in basinCenters:
     basinSizes.append(basin(b, basinCenters[b], content))
 
-print('Basin Sizes:', sorted(basinSizes, reverse=True))
+print('Basin Sizes:', sorted(basinSizes, reverse=True)[:3])
