@@ -1,6 +1,6 @@
 from collections import Counter
 
-handIn = open('input5.txt')
+handIn = open('input05.txt')
 content = handIn.readlines()
 
 for index in range(len(content)):

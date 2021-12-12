@@ -1,4 +1,4 @@
-handIn = open("Advent2021/input2.txt")
+handIn = open("input02.txt")
 
 content = handIn.readlines()
 

@@ -37,9 +37,8 @@ def calculate1and0(content):
 
     return gamma, epsilon, lst
 
-handIn = open('input3.txt')
+handIn = open('input03.txt')
 content = handIn.readlines()
-handIn.close()
 
 #problem 1
 gamma, epsilon, lst = calculate1and0(content)

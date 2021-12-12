@@ -43,7 +43,7 @@ def playBingo(bingoOrder, boardLst):
     return winningBoards, numRightNow
 
 
-handIn = open('input4.txt')
+handIn = open('input04.txt')
 
 numOrder = (handIn.readline()).split(',')
 content = handIn.readlines()

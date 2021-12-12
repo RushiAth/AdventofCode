@@ -1,4 +1,4 @@
-handIn = open('testingInput.txt')
+handIn = open('input08.txt')
 content = [(line.strip()).split(' | ') for line in (handIn.readlines())]
 
 #part 1

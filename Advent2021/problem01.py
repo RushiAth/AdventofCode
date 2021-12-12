@@ -1,13 +1,11 @@
-handIn = open('input1.txt')
+handIn = open('input01.txt')
 
-content = handIn.read()
-content = content.split()
+content = (handIn.read()).split()
 
-#making all ints
-for num in range(0, len(content)):
+for num in range(len(content)):
     content[num] = int(content[num])
 
-#puzzle 1
+#part 1
 counter = 0
 
 for num in range(1, len(content)-1):
@@ -16,8 +14,7 @@ for num in range(1, len(content)-1):
 
 print(counter)
 
-
-#puzzle 2
+#part 2
 counter = 0
 
 for num in range(0, len(content)-3):
@@ -25,5 +22,3 @@ for num in range(0, len(content)-3):
         counter += 1
 
 print(counter)
-
-handIn.close()

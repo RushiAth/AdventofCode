@@ -11,7 +11,7 @@ def day(fishD):
             newFishD[6] += fishD[0]
     return newFishD
 
-handIn = open('input6.txt')
+handIn = open('input06.txt')
 content = Counter([int(num) for num in (handIn.read()).split(',')])
 
 for i in range(256):

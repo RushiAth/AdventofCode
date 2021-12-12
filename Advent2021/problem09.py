@@ -1,4 +1,4 @@
-handIn = open('input9.txt')
+handIn = open('input09.txt')
 content = [line.strip() for line in handIn.readlines()]
 
 def checkSurrounding(num, index1, index2, lst):
