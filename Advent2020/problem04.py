@@ -30,6 +30,7 @@ for index in range(len(content)):
             counter += 1
         elif content[index][ind][:3] == 'pid' and len(content[index][ind][4:]) == 9:
             counter += 1
+            
     if counter == 7:
         valid += 1
 
