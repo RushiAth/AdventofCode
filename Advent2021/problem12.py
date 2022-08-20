@@ -1,7 +1,8 @@
-handIn = open('testingInput.txt')
+handIn = open('input12.txt')
 content = [line.strip() for line in handIn.readlines()]
 
 caves = {}
+pathCount = 0
 
 for line in content:
     one, two = line.split('-')
@@ -10,15 +11,26 @@ for line in content:
     caves[one].append(two)
     caves[two].append(one)
 
-def findPath(position, dict):
-    None
 
+def findPath(position, alreadyVisited) -> bool:
 
-currentPos = 'start'
-alreadyVisited = ['start']
+    global pathCount
 
-for loc in caves['start']:
-    findPath(currentPos, caves)
+    if position == 'end':
+        pathCount += 1
+        return True
 
+    for loc in caves[position]:
 
-print(caves)
+        if loc not in alreadyVisited:
+            if position.islower() and position not in alreadyVisited:
+                alreadyVisited = alreadyVisited + (position,)
+
+            findPath(loc, alreadyVisited)
+
+    return False
+    
+
+findPath('start', ('start',))
+
+print(pathCount)
